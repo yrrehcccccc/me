@@ -58,7 +58,7 @@
     const url=link.href;
     const folder=link.dataset.folder ? document.querySelector('#folder-'+link.dataset.folder) : null;
     folder?.classList.add('is-opening');
-    const minimum=folder?420:220;
+    const minimum=folder?1540:220;
     let allowed=false,loaded=false,shown=false;
     const revealSite = () => {
       if (!allowed || !loaded || shown || !leaving) return;

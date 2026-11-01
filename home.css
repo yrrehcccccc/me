@@ -6,8 +6,8 @@ body::before{content:"";position:fixed;top:0;bottom:0;left:50%;width:var(--page-
 .scrapbook{position:relative;isolation:isolate;width:var(--page-width);aspect-ratio:1440/3333;margin:0 auto;overflow:hidden;overflow:clip}
 .layer{position:absolute;z-index:var(--order);margin:0;padding:0;border:0;background:none;line-height:0;pointer-events:none;-webkit-tap-highlight-color:transparent}
 .layer img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
-.folder{transform-origin:10% 85%;transition:transform .72s cubic-bezier(.2,.75,.25,1),filter .72s}
-.folder.is-opening{z-index:70;transform:translate(4%,-.6%) rotate(-2.5deg);filter:drop-shadow(9px 7px 9px #6a3e3b35)}
+.folder{transform-origin:10% 85%;transition:transform 1.44s cubic-bezier(.2,.75,.25,1),filter 1.44s}
+.folder.is-opening{transform:translate(4%,-.6%) rotate(-2.5deg);filter:drop-shadow(9px 7px 9px #6a3e3b35)}
 .folder-tab{position:absolute;z-index:30;display:block;border-radius:12px;-webkit-tap-highlight-color:transparent}
 .folder-tab:focus-visible,.toy:focus-visible{outline:2px dashed #7252b8;outline-offset:-3px}
 .folder-tab:hover{background:#fff4d609}
@@ -16,13 +16,13 @@ body::before{content:"";position:fixed;top:0;bottom:0;left:50%;width:var(--page-
 .layer-7{z-index:7}
 .layer-14{z-index:8}
 .js .entrance:not(.is-visible){opacity:0}
-.layer-7.is-visible{animation:insert-photo 1s cubic-bezier(.16,.8,.25,1) both}
-.layer-15.is-visible{animation:sticker .65s .72s cubic-bezier(.18,.75,.25,1) both;transform-origin:55% 50%}
-.layer-16.is-visible{animation:sticker .65s 1.05s cubic-bezier(.18,.75,.25,1) both;transform-origin:55% 50%}
-.layer-10.is-visible{animation:slide-left 1s cubic-bezier(.16,.8,.25,1) both}
-.layer-12.is-visible{animation:slide-right 1s .15s cubic-bezier(.16,.8,.25,1) both}
-.layer-13.is-visible{animation:appear 1s .3s both}
-.layer-13.is-visible img{animation:float 4.5s 1.3s ease-in-out infinite}
+.layer-7.is-visible{animation:insert-photo 2s cubic-bezier(.16,.8,.25,1) both}
+.layer-15.is-visible{animation:sticker 1.3s 1.44s cubic-bezier(.18,.75,.25,1) both;transform-origin:55% 50%}
+.layer-16.is-visible{animation:sticker 1.3s 2.1s cubic-bezier(.18,.75,.25,1) both;transform-origin:55% 50%}
+.layer-10.is-visible{animation:slide-left 2s cubic-bezier(.16,.8,.25,1) both}
+.layer-12.is-visible{animation:slide-right 2s .3s cubic-bezier(.16,.8,.25,1) both}
+.layer-13.is-visible{animation:appear 2s .6s both}
+.layer-13.is-visible img{animation:float 4.5s 2.6s ease-in-out infinite}
 .site-transition{position:fixed;inset:0;z-index:100;background:#df9e89;opacity:0;pointer-events:none;transition:opacity .52s ease}
 .site-transition.is-visible{opacity:1;pointer-events:auto}
 .site-transition iframe{display:block;width:100%;height:100%;border:0;background:#df9e89}
@@ -33,6 +33,6 @@ body::before{content:"";position:fixed;top:0;bottom:0;left:50%;width:var(--page-
 @keyframes slide-left{from{opacity:0;transform:translateX(-22%)}to{opacity:1;transform:none}}
 @keyframes slide-right{from{opacity:0;transform:translateX(22%)}to{opacity:1;transform:none}}
 @keyframes appear{from{opacity:0}to{opacity:1}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3%)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8%)}}
 @keyframes wiggle{0%,100%{transform:rotate(0)}18%{transform:rotate(-6deg)}36%{transform:rotate(5deg)}54%{transform:rotate(-4deg)}72%{transform:rotate(2deg)}}
 @media(prefers-reduced-motion:reduce){.folder,.site-transition{transition:none}.entrance,.layer-13 img,.toy img{animation:none!important;opacity:1!important;transform:none!important}.js .entrance:not(.is-visible){opacity:1}}
