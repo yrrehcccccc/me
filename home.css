@@ -1,9 +1,9 @@
 :root{--page-width:min(100%,430px);color-scheme:light;background:#df9e89}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:0;overscroll-behavior:none}
+html,body{width:100%;margin:0;padding:0;min-height:0;overscroll-behavior:none}html{overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{position:relative;isolation:isolate}
-body::before{content:"";position:fixed;top:0;bottom:0;left:50%;width:var(--page-width);transform:translateX(-50%);z-index:-1;pointer-events:none;background:#df9e89 url("assets/back.jpg") center top/cover no-repeat}
-.scrapbook{position:relative;isolation:isolate;width:var(--page-width);aspect-ratio:1440/3607;margin:0 auto;overflow:hidden;overflow:clip}
+.page-background{position:fixed;top:0;left:50%;width:100%;max-width:430px;height:100vh;height:100lvh;min-height:100%;transform:translateX(-50%);z-index:0;pointer-events:none;background:#df9e89 url("assets/back.jpg") center top/cover no-repeat}
+.scrapbook{position:relative;z-index:1;isolation:isolate;width:100%;max-width:430px;aspect-ratio:1440/3607;margin:0 auto;overflow:hidden;overflow:clip}
 .layer{position:absolute;z-index:var(--order);margin:0;padding:0;border:0;background:none;line-height:0;pointer-events:none;-webkit-tap-highlight-color:transparent}
 .layer img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
 .folder{transform-origin:10% 85%;transition:transform 1.44s cubic-bezier(.2,.75,.25,1),filter 1.44s}
@@ -42,3 +42,15 @@ body::before{content:"";position:fixed;top:0;bottom:0;left:50%;width:var(--page-
 .draggable.is-dragging{cursor:grabbing;touch-action:none}
 .draggable.is-dragging.layer-13 img{animation-play-state:paused}
 .draggable:focus-visible{outline:2px dashed #7252b8;outline-offset:-3px}
+
+/* Explicit phone width; keep the desktop artwork column at 430px. */
+@media(max-width:640px){
+  :root{--page-width:100%}
+  .scrapbook{width:100%;max-width:none;margin-inline:0}
+  .page-background{left:0;width:100%;max-width:none;transform:none}
+}
+html.handheld{--page-width:100%}
+.handheld .scrapbook{width:100%;max-width:none;margin-inline:0}
+.handheld .page-background{left:0;width:100%;max-width:none;transform:none}
+/* Paint the same paper on the document canvas as a fallback around Safari chrome. */
+html{background-image:url("assets/back.jpg");background-position:center top;background-size:var(--page-width) auto;background-repeat:no-repeat;background-attachment:fixed}
