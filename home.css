@@ -1,9 +1,9 @@
 :root{--page-width:min(100%,430px);color-scheme:light;background:#df9e89}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;overscroll-behavior-x:none}
+html,body{margin:0;min-height:0;overscroll-behavior:none}
 body{position:relative;isolation:isolate}
 body::before{content:"";position:fixed;top:0;bottom:0;left:50%;width:var(--page-width);transform:translateX(-50%);z-index:-1;pointer-events:none;background:#df9e89 url("assets/back.jpg") center top/cover no-repeat}
-.scrapbook{position:relative;isolation:isolate;width:var(--page-width);aspect-ratio:1440/3333;margin:0 auto;overflow:hidden;overflow:clip}
+.scrapbook{position:relative;isolation:isolate;width:var(--page-width);aspect-ratio:1440/3607;margin:0 auto;overflow:hidden;overflow:clip}
 .layer{position:absolute;z-index:var(--order);margin:0;padding:0;border:0;background:none;line-height:0;pointer-events:none;-webkit-tap-highlight-color:transparent}
 .layer img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
 .folder{transform-origin:10% 85%;transition:transform 1.44s cubic-bezier(.2,.75,.25,1),filter 1.44s}
@@ -36,3 +36,9 @@ body::before{content:"";position:fixed;top:0;bottom:0;left:50%;width:var(--page-
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8%)}}
 @keyframes wiggle{0%,100%{transform:rotate(0)}18%{transform:rotate(-6deg)}36%{transform:rotate(5deg)}54%{transform:rotate(-4deg)}72%{transform:rotate(2deg)}}
 @media(prefers-reduced-motion:reduce){.folder,.site-transition{transition:none}.entrance,.layer-13 img,.toy img{animation:none!important;opacity:1!important;transform:none!important}.js .entrance:not(.is-visible){opacity:1}}
+
+/* Drag translation is independent of entrance and floating transforms. */
+.draggable{pointer-events:auto;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;translate:var(--drag-x,0px) var(--drag-y,0px)}
+.draggable.is-dragging{cursor:grabbing;touch-action:none}
+.draggable.is-dragging.layer-13 img{animation-play-state:paused}
+.draggable:focus-visible{outline:2px dashed #7252b8;outline-offset:-3px}
