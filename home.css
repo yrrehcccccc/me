@@ -1,0 +1,38 @@
+:root{--page-width:min(100%,430px);color-scheme:light;background:#df9e89}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;overscroll-behavior-x:none}
+body{position:relative;isolation:isolate}
+body::before{content:"";position:fixed;top:0;bottom:0;left:50%;width:var(--page-width);transform:translateX(-50%);z-index:-1;pointer-events:none;background:#df9e89 url("assets/back.jpg") center top/cover no-repeat}
+.scrapbook{position:relative;isolation:isolate;width:var(--page-width);aspect-ratio:1440/3333;margin:0 auto;overflow:hidden;overflow:clip}
+.layer{position:absolute;z-index:var(--order);margin:0;padding:0;border:0;background:none;line-height:0;pointer-events:none;-webkit-tap-highlight-color:transparent}
+.layer img{display:block;width:100%;height:auto;user-select:none;-webkit-user-drag:none}
+.folder{transform-origin:10% 85%;transition:transform .72s cubic-bezier(.2,.75,.25,1),filter .72s}
+.folder.is-opening{z-index:70;transform:translate(4%,-.6%) rotate(-2.5deg);filter:drop-shadow(9px 7px 9px #6a3e3b35)}
+.folder-tab{position:absolute;z-index:30;display:block;border-radius:12px;-webkit-tap-highlight-color:transparent}
+.folder-tab:focus-visible,.toy:focus-visible{outline:2px dashed #7252b8;outline-offset:-3px}
+.folder-tab:hover{background:#fff4d609}
+.toy{pointer-events:auto;cursor:pointer;touch-action:manipulation}
+.toy.is-wiggling img{animation:wiggle .5s ease both}
+.layer-7{z-index:7}
+.layer-14{z-index:8}
+.js .entrance:not(.is-visible){opacity:0}
+.layer-7.is-visible{animation:insert-photo 1s cubic-bezier(.16,.8,.25,1) both}
+.layer-15.is-visible{animation:sticker .65s .72s cubic-bezier(.18,.75,.25,1) both;transform-origin:55% 50%}
+.layer-16.is-visible{animation:sticker .65s 1.05s cubic-bezier(.18,.75,.25,1) both;transform-origin:55% 50%}
+.layer-10.is-visible{animation:slide-left 1s cubic-bezier(.16,.8,.25,1) both}
+.layer-12.is-visible{animation:slide-right 1s .15s cubic-bezier(.16,.8,.25,1) both}
+.layer-13.is-visible{animation:appear 1s .3s both}
+.layer-13.is-visible img{animation:float 4.5s 1.3s ease-in-out infinite}
+.site-transition{position:fixed;inset:0;z-index:100;background:#df9e89;opacity:0;pointer-events:none;transition:opacity .52s ease}
+.site-transition.is-visible{opacity:1;pointer-events:auto}
+.site-transition iframe{display:block;width:100%;height:100%;border:0;background:#df9e89}
+.site-transition.is-loading iframe{visibility:hidden}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@keyframes insert-photo{from{opacity:.5;transform:translateY(3%)}to{opacity:1;transform:translateY(0)}}
+@keyframes sticker{0%{opacity:0;transform:translateY(-3%) rotate(-10deg) scale(1.12)}65%{opacity:1;transform:rotate(2deg) scale(.98)}100%{opacity:1;transform:none}}
+@keyframes slide-left{from{opacity:0;transform:translateX(-22%)}to{opacity:1;transform:none}}
+@keyframes slide-right{from{opacity:0;transform:translateX(22%)}to{opacity:1;transform:none}}
+@keyframes appear{from{opacity:0}to{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3%)}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}18%{transform:rotate(-6deg)}36%{transform:rotate(5deg)}54%{transform:rotate(-4deg)}72%{transform:rotate(2deg)}}
+@media(prefers-reduced-motion:reduce){.folder,.site-transition{transition:none}.entrance,.layer-13 img,.toy img{animation:none!important;opacity:1!important;transform:none!important}.js .entrance:not(.is-visible){opacity:1}}
